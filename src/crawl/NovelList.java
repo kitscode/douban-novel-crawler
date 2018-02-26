@@ -13,6 +13,7 @@ public class NovelList {
 	public void testName(){
 		//https://book.douban.com/tag/小说
 		String url="https://book.douban.com/tag/%E5%B0%8F%E8%AF%B4";
-		System.out.println(Crawler.getHtml(url));
+		String url2="https://book.douban.com/tag/%E5%B0%8F%E8%AF%B4?start=20&type=T";
+		System.out.println(Crawler.getHtml(url2));
 	}
 }
