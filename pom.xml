@@ -4,14 +4,34 @@
 	<groupId>org.kitscode</groupId>
 	<artifactId>douban-novel-crawler</artifactId>
 	<version>0.0.1</version>
+	
+	<!-- springboot -->
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>1.5.7.RELEASE</version>
+		<relativePath />
+	</parent>
+
 
 	<dependencies>
 		<!-- 持久层Nutz -->
-		<!-- https://mvnrepository.com/artifact/org.nutz/nutz -->
 		<dependency>
 			<groupId>org.nutz</groupId>
 			<artifactId>nutz</artifactId>
 			<version>1.r.63</version>
+		</dependency>
+		<!-- httpclient -->
+		<dependency>
+			<groupId>org.apache.httpcomponents</groupId>
+			<artifactId>httpclient</artifactId>
+			<version>4.5.1</version>
+		</dependency>
+		<!-- jsoup -->
+		<dependency>
+			<groupId>org.jsoup</groupId>
+			<artifactId>jsoup</artifactId>
+			<version>1.8.2</version>
 		</dependency>
 	</dependencies>
 

@@ -1,13 +1,14 @@
-package model;
+package org.kitscode.task;
 
+import org.kitscode.base.BaseTask;
 import org.nutz.dao.entity.annotation.Column;
-
-import base.BaseTask;
+import org.nutz.dao.entity.annotation.Table;
 
 /**
  * @author kevin
  * @date 2018/2/26
  */
+@Table("book_task")
 public class BookTask extends BaseTask{
 	@Column
 	private String name;

@@ -1,13 +1,14 @@
-package model;
+package org.kitscode.model;
 
+import org.kitscode.base.BaseModel;
 import org.nutz.dao.entity.annotation.Column;
-
-import base.BaseModel;
+import org.nutz.dao.entity.annotation.Table;
 
 /**
  * @author kevin
  * @date 2018/2/26
  */
+@Table("book_info")
 public class BookInfo extends BaseModel {
 	@Column
 	private String name;

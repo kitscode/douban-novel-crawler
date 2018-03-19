@@ -1,4 +1,4 @@
-package base;
+package org.kitscode.base;
 
 import org.nutz.dao.entity.annotation.Column;
 
