@@ -7,8 +7,9 @@ import org.kitscode.base.BaseCrawler;
  * @date 2018年3月19日
  */
 public class LinkCrawler extends BaseCrawler{
+	
 	@Override
-	protected void crawl() throws InterruptedException {
+	public void crawl() throws Exception {
 			System.out.println("222");
 	}
 }
