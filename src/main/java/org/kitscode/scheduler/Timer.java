@@ -22,12 +22,8 @@ public class Timer {
 	}
 	
 	@Test
-	public void testName() throws Exception {
+	public static void main(String a[]) throws Exception {
 		Class<?> task_class=Class.forName("org.kitscode.crawler.PageCrawler");
-	/*	Constructor<?>[] cs=task_class.getDeclaredConstructors();
-		System.out.println(cs.length);
-		System.out.println(cs[0]);
-		System.out.println(cs[1]);*/
 		Constructor<?> cs = task_class.getConstructor(BaseTask.class);
 		BaseCrawler crawler=(BaseCrawler)cs.newInstance(new PageTask());
 		crawler.start();

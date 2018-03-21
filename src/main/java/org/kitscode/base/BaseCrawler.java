@@ -13,7 +13,7 @@ public abstract class BaseCrawler extends Thread {
 	private static Logger logger = LoggerFactory.getLogger(BaseCrawler.class);
 //	private Dao dao=DB.getDao();
 
-	BaseTask task;
+	private BaseTask task;
 	public BaseCrawler(){
 	}
 	
@@ -24,15 +24,14 @@ public abstract class BaseCrawler extends Thread {
 	@Override
 	public void run(){
 		String task_name=task.toString();
-		System.out.println(">>>>>>>>>>"+task_name);
 //		dao.update(task, Chain.make("status",1), Cnd.where("id", "=",((BaseTask)task).getId()));
-//		logger.info("#########"+task_name+"任务开始#########");
 		try {
+			logger.info("#########"+task_name+"任务开始#########");
 			crawl();
 			//dao.update(SherpaRequest.class, Chain.make("status",2), Cnd.where("id", "=",task.getId()));
-//			logger.info("#########"+task_name+"任务结束#########");
+			logger.info("#########"+task_name+"任务结束#########");
 		} catch (Exception e) {
-//			logger.error("#########"+task_name+"解析异常#########");
+			logger.error("#########"+task_name+"解析异常#########");
 			e.printStackTrace();
 			//dao.update(SherpaRequest.class, Chain.make("status",3), Cnd.where("id", "=",task.getId()));		
 		}

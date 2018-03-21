@@ -26,7 +26,8 @@ public class BaseTask extends BaseModel{
 	}
 	@Override
 	public String toString() {
-		return this.getClass().getName();
+		String package_name=this.getClass().getName();
+		return package_name.substring(package_name.lastIndexOf(".")+1);
 	}
 	
 }
