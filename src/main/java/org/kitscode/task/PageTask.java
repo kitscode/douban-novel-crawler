@@ -10,5 +10,4 @@ import org.nutz.dao.entity.annotation.Table;
 @Table("page_task")
 public class PageTask extends BaseTask{
 	
-	
 }

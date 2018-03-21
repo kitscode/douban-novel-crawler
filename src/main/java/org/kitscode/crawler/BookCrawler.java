@@ -9,9 +9,6 @@ import org.kitscode.task.PageTask;
  */
 public class BookCrawler extends BaseCrawler{
 	PageTask task;
-	public BookCrawler(PageTask task) {
-		super(task);
-	}
 	
 	@Override
 	public void crawl() throws Exception {

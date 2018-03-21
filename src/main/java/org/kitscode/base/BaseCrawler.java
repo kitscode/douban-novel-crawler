@@ -13,10 +13,10 @@ public abstract class BaseCrawler extends Thread {
 	private static Logger logger = LoggerFactory.getLogger(BaseCrawler.class);
 //	private Dao dao=DB.getDao();
 
-	private BaseTask task;
 	public BaseCrawler(){
 	}
 	
+	protected BaseTask task;
 	public BaseCrawler(BaseTask task) {
 		this.task=task;
 	}
