@@ -26,5 +26,6 @@
     <root level="INFO">  
         <appender-ref ref="CONSOLE"></appender-ref>  
         <appender-ref ref="FILE"></appender-ref>  
-    </root>  
+    </root>
+    <logger name="org.quartz" level="WARN" />
 </configuration>  
