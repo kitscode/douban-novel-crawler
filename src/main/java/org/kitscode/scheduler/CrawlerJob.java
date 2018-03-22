@@ -17,14 +17,9 @@ public class CrawlerJob implements Job{
 
 	@Override
 	public void execute(JobExecutionContext context) throws JobExecutionException {
-		Dao dao=DB.getDao();
+//		Dao dao=DB.getDao();
 		JobDetail jobDetail = context.getJobDetail();
-		System.out.println(jobDetail.getJobDataMap());
 		System.out.println(jobDetail.getDescription());
-		System.out.println(jobDetail.getClass());
-		System.out.println(jobDetail.getJobBuilder());
-		System.out.println(jobDetail.getJobClass());
-		System.out.println(jobDetail.getKey());
 		
 		
 //		try {
