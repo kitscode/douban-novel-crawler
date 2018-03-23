@@ -16,7 +16,7 @@ public class CrawlerPool {
 		ExecutorService pool = null;
 		pool = MAP.get(crawler_name);
 		if (pool == null) {
-			pool = Executors.newScheduledThreadPool(thread_count); 
+			pool = Executors.newFixedThreadPool(thread_count); 
 			MAP.put(crawler_name, pool);
 		}
 		return pool;
