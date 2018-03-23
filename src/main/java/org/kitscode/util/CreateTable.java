@@ -9,11 +9,12 @@ import org.nutz.dao.util.Daos;
  * @date 2018年3月19日
  */
 public class CreateTable {
+	//Nutz建表类
 	@Test
 	public void createTables() throws Exception {
 		Dao dao=DB.getDao();
 		System.out.println("####### 开始建表 ######");
-		Daos.createTablesInPackage(dao, "org.kitscode.task", false);
+		Daos.createTablesInPackage(dao, "org.kitscode.model", false);
 		System.out.println("####### 建表成功 ######");
 	}
 }

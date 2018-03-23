@@ -7,6 +7,7 @@ import java.util.concurrent.ExecutorService;
 import org.kitscode.base.BaseCrawler;
 import org.kitscode.base.BaseTask;
 import org.kitscode.util.DB;
+import org.nutz.dao.Chain;
 import org.nutz.dao.Cnd;
 import org.nutz.dao.Dao;
 import org.quartz.Job;
@@ -28,12 +29,13 @@ public class CrawlerJob implements Job{
 		
 		JobDetail jobDetail = context.getJobDetail();
 		String task = (String)jobDetail.getJobDataMap().get("task");
-		int count=Integer.parseInt((String)jobDetail.getJobDataMap().get("task_count"));
+		int count=(int) jobDetail.getJobDataMap().get("task_count");
 		String thread_allpath =(String)jobDetail.getJobDataMap().get("thread_allpath");
-		int thread_count=Integer.parseInt((String)jobDetail.getJobDataMap().get("thread_count"));
+		int thread_count=(int)jobDetail.getJobDataMap().get("thread_count");
 		
 		try {
 			Class<?> task_class = Class.forName(task);
+			dao.update(task_class, Chain.make("status", 0), Cnd.where("status", "=", 1));
 			List<BaseTask> task_list=(List<BaseTask>)dao.query(task_class, Cnd.where("status","=",0).limit(1,count));
 			logger.info("\n########### "+getTaskName(task_class.toString())
 					+":选中"+task_list.size()+"条记录,开始执行任务 ###########");
@@ -51,7 +53,6 @@ public class CrawlerJob implements Job{
 			try {
 				thread_class = Class.forName(thread_allpath);
 				Constructor<?> cs = thread_class.getConstructor(BaseTask.class);
-				task.setData_id(123);
 				crawler = (BaseCrawler) cs.newInstance(task);
 				pool.execute(crawler);
 			} catch (Exception e) {

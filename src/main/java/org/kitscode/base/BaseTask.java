@@ -8,9 +8,7 @@ import org.nutz.dao.entity.annotation.Column;
  */
 public class BaseTask extends BaseModel{
 	@Column
-	private int status;
-	@Column
-	private String url;
+	private int status=0;
 	
 	public int getStatus() {
 		return status;
@@ -18,16 +16,8 @@ public class BaseTask extends BaseModel{
 	public void setStatus(int status) {
 		this.status = status;
 	}
-	public String getUrl() {
-		return url;
-	}
-	public void setUrl(String url) {
-		this.url = url;
-	}
-	@Override
-	public String toString() {
+	public String getTaskName() {
 		String package_name=this.getClass().getName();
 		return package_name.substring(package_name.lastIndexOf(".")+1);
 	}
-	
 }

@@ -16,6 +16,8 @@ public class BaseModel {
 	private long data_id;
 	@Column
 	private Date storage_time;
+	@Column
+	private String url;
 	
 	public long getId() {
 		return id;
@@ -34,6 +36,12 @@ public class BaseModel {
 	}
 	public void setStorage_time(Date storage_time) {
 		this.storage_time = storage_time;
+	}
+	public String getUrl() {
+		return url;
+	}
+	public void setUrl(String url) {
+		this.url = url;
 	}
 	
 }
