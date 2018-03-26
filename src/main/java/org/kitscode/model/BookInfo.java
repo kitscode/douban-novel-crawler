@@ -136,5 +136,16 @@ public class BookInfo extends BaseModel {
 	public void setComment_count(int comment_count) {
 		this.comment_count = comment_count;
 	}
+	@Override
+	public String toString() {
+		return "BookInfo [name=" + name + ", area=" + area + ", author="
+				+ author + ", press=" + press + ", original_name="
+				+ original_name + ", translator=" + translator
+				+ ", publish_time=" + publish_time + ", pages=" + pages
+				+ ", price=" + price + ", isbn=" + isbn + ", score=" + score
+				+ ", comment_count=" + comment_count + ", description="
+				+ description + ", author_profile=" + author_profile
+				+ ", tags=" + tags + "]";
+	}
 	
 }
