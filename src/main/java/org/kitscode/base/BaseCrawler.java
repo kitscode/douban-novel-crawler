@@ -1,6 +1,7 @@
 package org.kitscode.base;
 
 import org.kitscode.util.DB;
+import org.kitscode.util.NoContentException;
 import org.nutz.dao.Chain;
 import org.nutz.dao.Cnd;
 import org.nutz.dao.Dao;
@@ -34,7 +35,10 @@ public abstract class BaseCrawler extends Thread {
 			crawl();
 			dao.update(task.getClass(), Chain.make("status",2), Cnd.where("id", "=",task.getId()));
 			logger.info("#########"+task_name+"任务结束#########");
-		} catch (Exception e) {
+		}catch (NoContentException e) {
+			logger.error("#########"+task_name+"此页没有内容 #########");
+			dao.update(task.getClass(), Chain.make("status",4), Cnd.where("id", "=",task.getId()));		
+		}catch (Exception e) {
 			logger.error("#########"+task_name+"解析异常#########");
 			e.printStackTrace();
 			dao.update(task.getClass(), Chain.make("status",3), Cnd.where("id", "=",task.getId()));		

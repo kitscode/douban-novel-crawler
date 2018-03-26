@@ -9,6 +9,7 @@ import org.nutz.dao.entity.annotation.TableIndexes;
 /**
  * @author kevin
  * @date 2018年3月21日
+ * 状态4为没有内容的页面
  */
 @Table("link_task")
 @TableIndexes({@Index(name="unique_page",fields={"url"},unique=true)})

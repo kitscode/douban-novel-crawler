@@ -12,6 +12,7 @@ import org.kitscode.model.BookTask;
 import org.kitscode.model.LinkTask;
 import org.kitscode.util.Crawler;
 import org.kitscode.util.DB;
+import org.kitscode.util.NoContentException;
 import org.nutz.dao.Dao;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -35,11 +36,14 @@ public class LinkCrawler extends BaseCrawler {
 	}
 
 	@Override
-	public void crawl() throws Exception {
+	public void crawl() throws NoContentException,Exception {
 		LinkTask task=(LinkTask)super.task;
 		String url=task.getUrl();
 		String html="";
 		html=Crawler.getHtml(url);
+		//如果没有内容，置4
+		if(html.contains("没有找到符合条件的图书"))
+			throw new NoContentException();
 		Document doc=Jsoup.parse(html);
 		//获得图书列表
 		Element book_list=doc.select("ul.subject-list").first();

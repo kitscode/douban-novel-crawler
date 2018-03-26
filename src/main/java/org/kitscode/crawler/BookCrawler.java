@@ -2,6 +2,7 @@ package org.kitscode.crawler;
 
 import java.util.Date;
 
+import org.apache.commons.lang3.StringUtils;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -46,22 +47,27 @@ public class BookCrawler extends BaseCrawler{
 		Element info_ele=doc.select("div#info").first();
 		//书名v:itemreviewed
 		String name=doc.select("span[property=v:itemreviewed]").text();
-		logger.info("######### 正在解析"+name+" ##########");
+		logger.info("######### 正在解析《"+name+"》 ##########");
 		//地区&作者
-		String area_author=info_ele.select("a[href~=^https://book.douban.com/author]").text();
+		String area_author=info_ele.select("a").first().text();
 		String area=Utils.regex("\\[(.*)\\]",area_author);
 		String author=Utils.regex("\\](.*)", area_author).trim();
+		if(StringUtils.isBlank(author))
+			author=area_author;
 		//译者
 		Element translator_ele=info_ele.select("span:contains(译者)").first();
 		String translator="";
-		Elements translator_list=translator_ele.select("a");
-		for (int i = 0; i < translator_list.size(); i++) {
-			Element e=translator_list.get(i);
-			if(i!=translator_list.size()-1)
-				translator+=e.text()+"/";
-			else
-				translator+=e.text();
+		if(translator_ele!=null){
+			Elements translator_list=translator_ele.select("a");
+			for (int i = 0; i < translator_list.size(); i++) {
+				Element e=translator_list.get(i);
+				if(i!=translator_list.size()-1)
+					translator+=e.text()+"/";
+				else
+					translator+=e.text();
+			}
 		}
+		
 		//评分
 		String score_str=doc.select("strong.ll.rating_num").text();
 		float score=Float.parseFloat(score_str);
@@ -91,9 +97,7 @@ public class BookCrawler extends BaseCrawler{
 		String pages_str=Utils.regex("页数:</span>(.*)", info_str).trim();
 		int pages=Integer.parseInt(pages_str);
 		//价格
-		String price_str=Utils.regex("定价:</span>(.*)", info_str).trim();
-		String price_num=Utils.regexFloat(price_str);
-		float price=Float.parseFloat(price_num);
+		String price=Utils.regex("定价:</span>(.*)", info_str).trim();
 		//ISBN
 		String isbn=Utils.regex("ISBN:</span>(.*)", info_str).trim();
 		
@@ -102,7 +106,9 @@ public class BookCrawler extends BaseCrawler{
 		Elements eles=doc.select("div.intro");
 		String description=eles.get(0).text();
 		//作者简介
-		String author_profile=eles.get(1).select("p").first().text();
+		String author_profile="";
+		if(eles.size()>1)
+			author_profile=eles.get(1).select("p").first().text();
 		
 		//入库
 		BookInfo book=new BookInfo();

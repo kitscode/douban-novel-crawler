@@ -29,7 +29,7 @@ public class BookInfo extends BaseModel {
 	@Column
 	private int pages;
 	@Column
-	private float price;
+	private String price;
 	@Column
 	private String isbn;
 	@Column
@@ -93,12 +93,6 @@ public class BookInfo extends BaseModel {
 	public void setPages(int pages) {
 		this.pages = pages;
 	}
-	public float getPrice() {
-		return price;
-	}
-	public void setPrice(float price) {
-		this.price = price;
-	}
 	public String getIsbn() {
 		return isbn;
 	}
@@ -146,6 +140,12 @@ public class BookInfo extends BaseModel {
 				+ ", comment_count=" + comment_count + ", description="
 				+ description + ", author_profile=" + author_profile
 				+ ", tags=" + tags + "]";
+	}
+	public void setPrice(String price) {
+		this.price = price;
+	}
+	public String getPrice() {
+		return price;
 	}
 	
 }
