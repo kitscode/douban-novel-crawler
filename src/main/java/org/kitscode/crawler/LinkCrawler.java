@@ -24,11 +24,7 @@ import org.slf4j.LoggerFactory;
 public class LinkCrawler extends BaseCrawler {
 	private static Logger logger = LoggerFactory.getLogger(LinkCrawler.class);
 	private Dao dao=DB.getDao();
-	
-	public LinkCrawler() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
+
 
 	public LinkCrawler(BaseTask task) {
 		super(task);

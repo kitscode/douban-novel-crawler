@@ -26,15 +26,8 @@ public class BookCrawler extends BaseCrawler{
 	private static Logger logger = LoggerFactory.getLogger(BookCrawler.class);
 	private Dao dao=DB.getDao();
 
-	
-	public BookCrawler() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-
 	public BookCrawler(BaseTask task) {
 		super(task);
-		// TODO Auto-generated constructor stub
 	}
 
 	public void crawl() throws Exception {

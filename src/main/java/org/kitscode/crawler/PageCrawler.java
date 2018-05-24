@@ -18,15 +18,9 @@ import org.slf4j.LoggerFactory;
 public class PageCrawler extends BaseCrawler {
 	private static Logger logger = LoggerFactory.getLogger(PageCrawler.class);
 	private Dao dao=DB.getDao();
-	
-	public PageCrawler() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
 
 	public PageCrawler(BaseTask task) {
 		super(task);
-		// TODO Auto-generated constructor stub
 	}
 
 	@Override
