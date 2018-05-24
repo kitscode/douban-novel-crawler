@@ -25,7 +25,7 @@ public class QuartzMaster {
         SchedulerFactory sf = new StdSchedulerFactory();
         Scheduler scheduler = sf.getScheduler();
         JobDetail jb = JobBuilder.newJob(CrawlerJob.class).build();
-        JobDataMap data=new JobDataMap();
+        JobDataMap data=new JobDataMap();//用来传递和设置Job的详细参数
         data.put("task",task);
         data.put("task_count",task_count);
         data.put("thread_allpath",crawler);
@@ -38,13 +38,13 @@ public class QuartzMaster {
 		Trigger t ;
 		if(cron!=null){
 			t = TriggerBuilder.newTrigger().startAt(statTime)
-					.withSchedule(CronScheduleBuilder.cronSchedule(cron)).build();
+					.withSchedule(CronScheduleBuilder.cronSchedule(cron)).build();//有cron调度的
 		}else{
 			t = TriggerBuilder.newTrigger().startAt(statTime)
-					.withSchedule(SimpleScheduleBuilder.simpleSchedule()).build();
+					.withSchedule(SimpleScheduleBuilder.simpleSchedule()).build();//这个只执行一次
 		}
 		
-        scheduler.scheduleJob(jb, t);
+        scheduler.scheduleJob(jb, t);//有了JobDetail和Trigger，就可以开启任务了~
         scheduler.start();
         System.out.println("######### 爬虫启动 ########### 启动时间 ： " + new Date());
 	}

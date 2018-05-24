@@ -25,6 +25,7 @@ import org.slf4j.LoggerFactory;
 public class BookCrawler extends BaseCrawler{
 	private static Logger logger = LoggerFactory.getLogger(BookCrawler.class);
 	private Dao dao=DB.getDao();
+
 	
 	public BookCrawler() {
 		super();

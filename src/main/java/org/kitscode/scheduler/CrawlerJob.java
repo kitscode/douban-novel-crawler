@@ -35,7 +35,7 @@ public class CrawlerJob implements Job{
 		
 		try {
 			Class<?> task_class = Class.forName(task);
-			dao.update(task_class, Chain.make("status", 0), Cnd.where("status", "=", 1));
+			dao.update(task_class, Chain.make("status", 0), Cnd.where("status", "=", 1));//重启后，把中断的任务重置
 			List<BaseTask> task_list=(List<BaseTask>)dao.query(task_class, Cnd.where("status","=",0).limit(1,count));
 			logger.info("\n########### "+getTaskName(task_class.toString())
 					+":选中"+task_list.size()+"条记录,开始执行任务 ###########");
