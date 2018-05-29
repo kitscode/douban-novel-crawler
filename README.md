@@ -8,3 +8,5 @@
 - crawler:爬取线程
 - thread_count:线程数
 - cron:时间调度
+
+[说明文档](http://kevll.com/2018/05/01/%E7%94%A8Java%E5%86%99%E4%B8%80%E4%B8%AA%E7%88%AC%E8%99%AB/)
